@@ -10,16 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_16_040734) do
-
-  create_table "article_medias", charset: "utf8mb3", collation: "utf8_unicode_ci", force: :cascade do |t|
-    t.string "uuid", default: "5cb718b0-cf58-013a-71c3-0c8590ac713a", null: false
-    t.integer "article_id"
-    t.string "media_type"
-    t.string "media_content"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
+ActiveRecord::Schema.define(version: 2022_06_17_094642) do
 
   create_table "articles", charset: "utf8mb3", collation: "utf8_unicode_ci", force: :cascade do |t|
     t.string "uuid", default: "5cb002f0-cf58-013a-71c3-0c8590ac713a", null: false
@@ -27,6 +18,15 @@ ActiveRecord::Schema.define(version: 2022_06_16_040734) do
     t.string "title"
     t.text "content"
     t.string "media_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "media_articles", charset: "utf8mb3", collation: "utf8_unicode_ci", force: :cascade do |t|
+    t.string "uuid", default: "5e2ed880-d050-013a-71c4-0c8590ac713a", null: false
+    t.integer "article_id"
+    t.string "media_type"
+    t.string "media_content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -40,6 +40,13 @@ gem 'carrierwave', '2.2.2'
 gem 'uuid', '2.3.9'
 # Flexible authentication solution for Rails with Warden
 gem 'devise', '4.8.1'
+# Helpful method when you need to add some logic that figures out if the link is selected based on the current page or other arbitrary condition
+gem 'active_link_to', '1.0.5'
+# The official AWS SDK for Ruby. Provides both resource oriented interfaces and API clients for AWS services.
+gem 'aws-sdk', '~> 3'
+# gem 'aws-sdk-s3', '~> 1'
+# The Ruby cloud services library. Supports all major cloud providers including AWS,... Full support for most AWS services including EC2, S3, CloudWatch, SimpleDB, ELB, and RDS.
+gem 'fog', '~> 1.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

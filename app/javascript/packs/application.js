@@ -12,4 +12,11 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-import "./js/sb-admin"
+import jquery from 'jquery';
+window.$ = window.jquery = jquery;
+
+import "../src/application"
+import "@fortawesome/fontawesome-free/css/all"
+import "bootstrap"
+import "./sb-admin"
+import "./users"

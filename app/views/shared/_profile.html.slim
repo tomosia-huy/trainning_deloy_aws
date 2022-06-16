@@ -1,0 +1,31 @@
+.d-flex.flex-column.gap-1
+  .btn.btn-primary.mx-2.btn-update-user.border-0 data-bs-target="#modal-edit-profile" data-bs-toggle="modal" type="button"
+    i.fas.fa-pen-nib.mx-2
+    = "Edit profile"
+  /! Modal
+  #modal-edit-profile.modal.fade aria-hidden="true" aria-labelledby="modal-edit-profile" role="dialog" tabindex="-1"
+    .modal-dialog.modal-dialog-centered role="document"
+      .modal-content
+        = form_with model: current_user, url: user_path, method: :put, multipart: true, class: 'w-100' do |f|
+          .modal-header
+            h5.w-100.modal-title.text-center Edit profile
+            button.btn.btn-close.close aria-label="Close" data-bs-dismiss="modal" type="button"
+          .modal-body
+            = f.file_field :avatar, class: 'upload-avatar display-none',  accept: "image/*"
+            .d-flex.justify-content-center.avatar-profile.mb-4
+              = image_tag avatar(current_user.avatar_url), class: "js-upload-avatar profile-avatar"
+            .d-flex.gap-1.justify-content-between
+              .form-group.w-100
+                = f.label :first_name
+                = f.text_field :first_name, placeholder: "First name", class: "form-control mt-1"
+              .form-group.w-100
+                = f.label :last_name
+                = f.text_field :last_name, placeholder: "Last name", class: "form-control mt-1"
+            .form-group.w-100.mt-2
+              = f.label :address
+              = f.text_field :address, placeholder: "Address", class: "form-control mt-1"
+            .form-group.w-100.mt-2
+              = f.label :phone_number
+              = f.text_field :phone_number, placeholder: "Phone number", class: "form-control mt-1"
+          .modal-footer
+            = f.submit "Save change", class: "btn btn-secondary w-100"

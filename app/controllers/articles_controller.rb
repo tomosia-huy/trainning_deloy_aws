@@ -3,7 +3,8 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    @articles = Article.includes(:media_articles, :user).all
+    @article  = Article.new(user_id: current_user.id)
   end
 
   # GET /articles/1 or /articles/1.json
@@ -21,16 +22,18 @@ class ArticlesController < ApplicationController
 
   # POST /articles or /articles.json
   def create
-    @article = Article.new(article_params)
-
-    respond_to do |format|
+    if params[:article][:content].present? || params[:article][:article_medias].present?
+      @article = Article.new(article_params)
       if @article.save
-        format.html { redirect_to article_url(@article), notice: "Article was successfully created." }
-        format.json { render :show, status: :created, location: @article }
+        if params[:article][:article_medias].present?
+          @article.media_articles.create(media_content:  params[:article][:article_medias][:media_content])
+        end
+        redirect_back fallback_location: request.referrer, notice: "Article was successfully created."
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
+        redirect_back fallback_location: request.referrer, alert: @article.errors
       end
+    else
+      redirect_back fallback_location: request.referrer
     end
   end
 
@@ -65,6 +68,6 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.fetch(:article, {})
+      params.require(:article).permit(:content, :user_id, :media)
     end
 end
