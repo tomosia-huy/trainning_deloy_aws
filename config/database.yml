@@ -1,0 +1,22 @@
+default: &default
+  adapter: mysql2
+  timeout: 5000
+  encoding: utf8
+  charset: utf8
+  collation: utf8_unicode_ci
+
+development:
+  <<: *default
+  host: <%= ENV["DB_HOST"] %>
+  database: <%= ENV["DB_NAME"] %>
+  username: <%= ENV["DB_USER_NAME"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
+  socket: /tmp/mysql.sock
+
+staging:
+  <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
+
+production:
+  <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
