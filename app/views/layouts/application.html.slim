@@ -9,4 +9,7 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    = yield
+    .container
+      - if user_signed_in?
+        = link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn-link bg-transparent'
+      = yield
