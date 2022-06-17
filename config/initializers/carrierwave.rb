@@ -9,4 +9,5 @@ CarrierWave.configure do |config|
   config.fog_public = true
   config.enable_processing = false
   config.fog_directory = ENV['S3_BUCKET']
+  config.cache_storage = :fog
 end
