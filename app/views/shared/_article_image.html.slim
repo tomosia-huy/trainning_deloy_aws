@@ -1,0 +1,2 @@
+- image = media_article.media_content.present? ? media_article.media_content_url : asset_url('avatar_default.jpeg')
+= image_tag image, height: 400, style: 'object-fit: cover'

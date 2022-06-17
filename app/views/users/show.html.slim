@@ -1,11 +1,12 @@
 .d-flex.justify-content-between.gap-1
-  .col.bg-light
+  .col.mt-2
   .col-5
     .d-flex.justify-content-center.align-items-center.my-3
       = link_to "", class: "text-secondary bg-transparent text-decoration-none"
         = image_tag avatar(current_user.avatar_url), class: 'avatar mx-2', width: 40, height: 40
       .w-100
         = render partial: "shared/new_post"
-
     = render partial: "shared/card_item", collection: @articles, as: :article
-  .col.bg-light
+  .col.mt-2
+    - if @user.id.eql?(current_user.id)
+      = render partial: "shared/profile"

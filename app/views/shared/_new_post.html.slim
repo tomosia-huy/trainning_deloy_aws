@@ -1,0 +1,21 @@
+button.btn.btn-primary.mx-2.btn-new-article data-bs-target="#modal-new-article" data-bs-toggle="modal" type="button"
+  = "What's on your mind, #{current_user.last_name}?"
+/! Modal
+#modal-new-article.modal.fade aria-hidden="true" aria-labelledby="modal-new-article" role="dialog" tabindex="-1"
+  .modal-dialog.modal-dialog-centered role="document"
+    .modal-content
+      = form_with model: @article, url: articles_path, method: :post, multipart: true, class: 'w-100' do |f|
+        .modal-header
+          h5.w-100.modal-title.text-center Create post
+          button.btn.btn-close.close aria-label="Close" data-bs-dismiss="modal" type="button"
+            / span aria-hidden="true"  &times;
+        .modal-body
+            = f.hidden_field :user_id
+            = f.text_area :content, class: "form-control resize-none", rows: 5, placeholder: "What's on your mind, #{current_user.last_name}?"
+            = f.fields_for :article_medias do |fc|
+              button.js-upload-image.btn.btn-link.bg-transparent.my-2.outline-0.shadow-none type="button"
+                i.fa.fa-image.fs-2
+              = fc.file_field :media_content, accept: "image/*", class: "image-uploader"
+              #show-image-uploader.d-flex.justify-content-center.p-2
+        .modal-footer
+          = f.submit "Post", class: "btn btn-secondary w-100"
