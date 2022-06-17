@@ -24,16 +24,13 @@ class ArticlesController < ApplicationController
   def create
     if params[:article][:content].present? || params[:article][:article_medias].present?
       @article = Article.new(article_params)
-      if @article.save
+      ActiveRecord::Base.transaction do
+        @article.save!
         if params[:article][:article_medias].present?
-          @article.media_articles.create(media_content:  params[:article][:article_medias][:media_content])
+          @article.media_articles.create!(media_content:  params[:article][:article_medias][:media_content])
         end
-        redirect_back fallback_location: request.referrer, notice: "Article was successfully created."
-      else
-        redirect_back fallback_location: request.referrer, alert: @article.errors
       end
-    else
-      redirect_back fallback_location: request.referrer
+      redirect_back fallback_location: request.referrer, notice: "Article was successfully created."
     end
   end
 

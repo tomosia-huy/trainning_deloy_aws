@@ -12,8 +12,11 @@
 
 ActiveRecord::Schema.define(version: 2022_06_17_094642) do
 
-  create_table "articles", charset: "utf8mb3", collation: "utf8_unicode_ci", force: :cascade do |t|
-    t.string "uuid", default: "5cb002f0-cf58-013a-71c3-0c8590ac713a", null: false
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "articles", force: :cascade do |t|
+    t.string "uuid", default: "2d7529f0-d086-013a-7445-2af8bc6244c7", null: false
     t.integer "user_id"
     t.string "title"
     t.text "content"
@@ -22,8 +25,8 @@ ActiveRecord::Schema.define(version: 2022_06_17_094642) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "media_articles", charset: "utf8mb3", collation: "utf8_unicode_ci", force: :cascade do |t|
-    t.string "uuid", default: "5e2ed880-d050-013a-71c4-0c8590ac713a", null: false
+  create_table "media_articles", force: :cascade do |t|
+    t.string "uuid", default: "2d780330-d086-013a-7445-2af8bc6244c7", null: false
     t.integer "article_id"
     t.string "media_type"
     t.string "media_content"
@@ -31,8 +34,8 @@ ActiveRecord::Schema.define(version: 2022_06_17_094642) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "users", charset: "utf8mb3", collation: "utf8_unicode_ci", force: :cascade do |t|
-    t.string "uuid", default: "5c9ef980-cf58-013a-71c3-0c8590ac713a", null: false
+  create_table "users", force: :cascade do |t|
+    t.string "uuid", default: "2d6ea9e0-d086-013a-7445-2af8bc6244c7", null: false
     t.string "email", null: false
     t.string "encrypted_password", null: false
     t.string "reset_password_token"

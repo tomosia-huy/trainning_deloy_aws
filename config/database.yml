@@ -1,22 +1,21 @@
 default: &default
-  adapter: mysql2
-  timeout: 5000
+  adapter: postgresql
   encoding: utf8
-  charset: utf8
-  collation: utf8_unicode_ci
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+  host: <%= ENV["DB_HOST"] %>
+  username: <%= ENV["DB_USER_NAME"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
+  port: 5432
 
 development:
   <<: *default
-  host: <%= ENV["DB_HOST"] %>
   database: <%= ENV["DB_NAME"] %>
-  username: <%= ENV["DB_USER_NAME"] %>
-  password: <%= ENV["DB_PASSWORD"] %>
-  socket: /tmp/mysql.sock
 
 staging:
   <<: *default
-  url: <%= ENV["DATABASE_URL"] %>
+  database: <%= ENV["DB_NAME"] %>
 
 production:
   <<: *default
-  url: <%= ENV["DATABASE_URL"] %>
+  database: <%= ENV["DB_NAME"] %>

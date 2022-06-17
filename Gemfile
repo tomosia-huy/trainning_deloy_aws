@@ -6,9 +6,9 @@ ruby '2.7.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.5'
 # Use mysql as the database for Active Record
-gem 'mysql2', '~> 0.5'
+gem 'pg'
 # Use Puma as the app server
-gem 'puma', '~> 5.0'
+gem 'unicorn'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -36,6 +36,7 @@ gem 'slim', '4.1.0'
 gem 'slim-rails', '3.2.0'
 # Upload files in your Ruby applications, map them to a range of ORMs, store them on different backends.
 gem 'carrierwave', '2.2.2'
+gem 'mime-types', require: 'mime/types/full'
 # UUID generator for producing universally unique identifiers based on RFC 4122
 gem 'uuid', '2.3.9'
 # Flexible authentication solution for Rails with Warden
@@ -43,10 +44,10 @@ gem 'devise', '4.8.1'
 # Helpful method when you need to add some logic that figures out if the link is selected based on the current page or other arbitrary condition
 gem 'active_link_to', '1.0.5'
 # The official AWS SDK for Ruby. Provides both resource oriented interfaces and API clients for AWS services.
-gem 'aws-sdk', '~> 3'
-# gem 'aws-sdk-s3', '~> 1'
+# gem 'aws-sdk', '~> 3'
+gem 'aws-sdk-s3'
 # The Ruby cloud services library. Supports all major cloud providers including AWS,... Full support for most AWS services including EC2, S3, CloudWatch, SimpleDB, ELB, and RDS.
-gem 'fog', '~> 1.0'
+gem 'fog-aws'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
