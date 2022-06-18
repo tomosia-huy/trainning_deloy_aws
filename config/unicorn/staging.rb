@@ -1,4 +1,4 @@
-root = "/home/ubuntu/creator/current" # e.g. /var/apps/rails_blog/current
+root = "/home/ubuntu/trainning_deploy_aws/current" # e.g. /var/apps/rails_blog/current
 working_directory root
 
 pid "#{root}/tmp/pids/unicorn.pid"
