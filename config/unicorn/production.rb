@@ -10,7 +10,8 @@ worker_processes 8
 timeout 30
 preload_app true
 
-listen '/tmp/unicorn.creator.sock', backlog: 200
+# listen '/tmp/unicorn.sock', backlog: 200
+listen '/tmp/unicorn.trainning_deploy_aws.sock', backlog: 200
 
 before_fork do |server, worker|
   Signal.trap 'TERM' do

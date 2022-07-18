@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2022_06_17_094642) do
   enable_extension "plpgsql"
 
   create_table "articles", force: :cascade do |t|
-    t.string "uuid", default: "2d7529f0-d086-013a-7445-2af8bc6244c7", null: false
+    t.string "uuid", default: "37aa7970-d0db-013a-0dad-367ddacbb42c", null: false
     t.integer "user_id"
     t.string "title"
     t.text "content"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2022_06_17_094642) do
   end
 
   create_table "media_articles", force: :cascade do |t|
-    t.string "uuid", default: "2d780330-d086-013a-7445-2af8bc6244c7", null: false
+    t.string "uuid", default: "37ac8eb0-d0db-013a-0dad-367ddacbb42c", null: false
     t.integer "article_id"
     t.string "media_type"
     t.string "media_content"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2022_06_17_094642) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "uuid", default: "2d6ea9e0-d086-013a-7445-2af8bc6244c7", null: false
+    t.string "uuid", default: "37a491c0-d0db-013a-0dad-367ddacbb42c", null: false
     t.string "email", null: false
     t.string "encrypted_password", null: false
     t.string "reset_password_token"

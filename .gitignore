@@ -40,3 +40,5 @@ yarn-debug.log*
 /log/*
 !/log/.keep
 dump.rdb
+
+/config/credentials/production.key
